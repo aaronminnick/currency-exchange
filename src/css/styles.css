@@ -1,0 +1,47 @@
+body {
+  background-color: darkgreen;
+}
+
+select {
+  width: 100%;
+}
+
+input {
+  display: block;
+  border: 4px double black;
+  padding: .1em;
+}
+
+select {
+  border: 4px double black;
+  padding: .2em;
+}
+
+.jumbotron {
+  text-align: center;
+  padding-top: 2em;
+  margin-top: 2em;
+  color: blanchedalmond;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.container {
+  background-color: darkolivegreen;
+  border-radius: 2em;
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+.row {
+  margin-top: 2em;
+}
+
+#exchange-display, #error-display {
+  color: blanchedalmond;
+  text-align: center;
+  font-weight: 600;
+}
+label {
+  color: blanchedalmond;
+  font-weight: 600;
+}

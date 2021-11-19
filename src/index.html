@@ -5,21 +5,38 @@
 </head>
 <body>
   <div class='container'>
+    <div class='jumbotron'>
+      <h2>Currency Exchange Calculator</h2>
+    </div>
     <form id='exchange-form'>
-      <label for='amount'>Amount to convert:</label>
-      <input name='amount' id='amount' type='number' min='0' step='.01' value='0'>
-      <label for='curr-from-select'>Currency to convert from:</label>
-      <select name='curr-from' id='curr-from-select'>
-        <option value=''>Please select an option</option>
-      </select>
-      <label for='curr-to-select'>Currency to convert to:</label>
-      <select name='curr-to' id='curr-to-select'>
-        <option value=''>Please select an option</option>
-      </select>
-      <button type='submit'>Exchange</button>
+      <div class='row'>
+        <div class='col-1'></div>
+        <div class='col-2'>
+          <label for='amount'>Amount to convert:</label>
+          <input name='amount' id='amount' type='number' min='0' step='.01' value='0'>
+        </div>
+        <div class='col-1'></div>
+        <div class='col-4'>
+          <label for='curr-from-select'>Currency to convert from:</label>
+          <select name='curr-from' id='curr-from-select'>
+            <option value=''>Please select an option</option>
+          </select>
+        </div>
+        <div class='col-4'>
+          <label for='curr-to-select'>Currency to convert to:</label>
+          <select name='curr-to' id='curr-to-select'>
+            <option value=''>Please select an option</option>
+          </select>
+        </div>
+      </div>
+      <div class='row'>
+        <button type='submit'>Exchange</button>
+      </div>
     </form>
+    <div class='row'>
+      <div id='exchange-display'></div>
+      <div id='error-display'></div>
+    </div>
   </div>
-  <div id='exchange-display'></div>
-  <div id='error-display'></div>
 </body>
 </html>

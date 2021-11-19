@@ -19,7 +19,7 @@ function populateSelects() {
   let currFromSelect = $('#curr-from-select');
   let currToSelect = $('#curr-to-select');
   for (let i in codes) {
-    let optionString = `<option value=${codes[i][0]}>${codes[i][1]}</option>`;
+    let optionString = `<option value=${codes[i][0]}>${codes[i][0]} - ${codes[i][1]}</option>`;
     currFromSelect.append(optionString);
     currToSelect.append(optionString);
   }

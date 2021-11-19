@@ -14,7 +14,7 @@ export default class ExchangeService {
 
   static getRate(currFrom, currTo, amount) {
     return fetch(`https://v6.exchangerate-api.com/v6/${process.env.API_KEY}/pair/${currFrom}/${currTo}/${amount}`)
-      .then((response) =>{
+      .then((response) => {
         if (!response.ok) {
           throw Error(response.statusText);
         }

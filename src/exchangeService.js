@@ -3,12 +3,12 @@ export default class ExchangeService {
     return fetch(`https://v6.exchangerate-api.com/v6/${process.env.API_KEY}/codes`)
       .then((response) => {
         if (!response.ok) {
-          throw Error(response.statusText);
+          throw (response.statusText);
         }
         return response.json();
       })
       .catch((error) => {
-        return error;
+        return Error(error);
       });
   }
 
@@ -16,12 +16,12 @@ export default class ExchangeService {
     return fetch(`https://v6.exchangerate-api.com/v6/${process.env.API_KEY}/pair/${currFrom}/${currTo}/${amount}`)
       .then((response) => {
         if (!response.ok) {
-          throw Error(response.statusText);
+          throw (response.statusText);
         }
         return response.json();
       })
       .catch((error) => {
-        return error;
+        return Error(error);
       });
   }
 }

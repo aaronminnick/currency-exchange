@@ -7,9 +7,12 @@ async function storeCodes() {
       .then((response) => {
         if (response.supported_codes) {
           sessionStorage.setItem('codes', JSON.stringify(response.supported_codes));
-        } else {
-          $('#error-display').html(`<p>Error: ${response.message}</p>`);
+        } else if (response.error_type) {
+          $('#error-display').html(`<p>Error: ${response.error_type}</p>`);
         }
+      })
+      .catch((error) => {
+        $('#error-display').html(`<p>${error}</p>`);
       });
   }
 }
@@ -32,6 +35,11 @@ function displayExchange(amtFrom, currFrom, amtTo, currTo, rate) {
     `);
 }
 
+function clearOutput() {
+  $('#exchange-display').html('');
+  $('#error-display').html('');
+}
+
 storeCodes()
   .then(() => {
     populateSelects();
@@ -39,18 +47,37 @@ storeCodes()
 
 $('#exchange-form').on('submit', (event) => {
   event.preventDefault();
+  clearOutput();
   let amtFrom = $('#amount').val();
-  let currFrom = $('#curr-from-select').val();
-  let currTo = $('#curr-to-select').val();
-
+  let currFrom = 'XXX';
+  let currTo = 'XXX';
+  if ($('#curr-from-select').val() !== '') {
+    currFrom = $('#curr-from-select').val();
+  }
+  if ($('#curr-to-select').val() !== '') {
+    currTo = $('#curr-to-select').val();
+  }
   ExchangeService.getRate(currFrom, currTo, amtFrom)
     .then((response) => {
+      console.log(response);
+      if (response instanceof Error) {
+        throw (response);
+      }
       if (response.conversion_result) {
         let amtTo = response.conversion_result;
         let rate = response.conversion_rate;
         displayExchange(amtFrom, currFrom, amtTo, currTo, rate);
+      } else if (response.error_type === 'unsupported-code') {
+        $('#error-display').html(`<p>Error: Currency code is not supported.</p>`);
+      } else if (response.error_type) {
+        $('#error-display').html(`<p>Error: ${response.error_type}</p>`);
+      }
+    })
+    .catch((error) => {
+      if (error.message === 'Not Found') {
+        $('#error-display').html(`<p>Error: Currency code not selected, or currency code is not supported.</p>`);
       } else {
-        $('#error-display').html(`<p>Error: ${response.message}</p>`);
+        $('#error-display').html(`<p>${error}</p>`);
       }
     });
 });

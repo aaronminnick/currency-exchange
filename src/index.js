@@ -16,7 +16,6 @@ async function storeCodes() {
 
 function populateSelects() {
   let codes = JSON.parse(sessionStorage.getItem('codes'));
-  console.log(codes);
   let currFromSelect = $('#curr-from-select');
   let currToSelect = $('#curr-to-select');
   for (let i in codes) {

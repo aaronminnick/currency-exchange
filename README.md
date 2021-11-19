@@ -36,8 +36,9 @@ $ start dist/index.html
 ### API Key:
 In order for this application to run correctly in the local version, you will need to get an access key for the [ExchangeRate-API](https://www.exchangerate-api.com).
 * Click the link and use the "Get Free Key" button to obtain a key.
-* Once the have the repository set up on your local machine, you will need to create a .env file in the top level of the directory.
-* To properly be used by the application, your API key should be written in the .env file as follows:  
+* Once the have the repository set up on your local machine, you will need to create a .env file in the top level of the directory.  
+```$ touch .env```
+* To properly be used by the application, your API key should be added to the .env file as follows:  
 ```API_KEY=(your key here)```
 
 ### Known Bugs/Issues:

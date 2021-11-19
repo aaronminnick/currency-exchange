@@ -5,14 +5,19 @@
 </head>
 <body>
   <div class='container'>
-    <label for='curr-from-select'>Currency to convert from:</label>
-    <select name='curr-from' id='curr-from-select'>
-      <option value=''>Please select an option:</option>
-    </select>
-    <label for='curr-to-select'>Currency to convert to:</label>
-    <select name='curr-to' id='curr-to-select'>
-      <option value=''>Please select an option:</option>
-    </select>
+    <form id='exchange-form'>
+      <label for='amount'>Amount to convert:</label>
+      <input name='amount' id='amount' type='number' min='0' step='.01'>
+      <label for='curr-from-select'>Currency to convert from:</label>
+      <select name='curr-from' id='curr-from-select'>
+        <option value=''>Please select an option</option>
+      </select>
+      <label for='curr-to-select'>Currency to convert to:</label>
+      <select name='curr-to' id='curr-to-select'>
+        <option value=''>Please select an option</option>
+      </select>
+      <button type='submit'>Exchange</button>
+    </form>
   </div>
   <div id='error-display'></div>
 </body>

@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import ExchangeService from "./exchangeService";
 
 async function storeCodes() {
@@ -15,6 +16,13 @@ async function storeCodes() {
 function populateSelects() {
   let codes = JSON.parse(sessionStorage.getItem('codes'));
   console.log(codes);
+  let currFromSelect = $('#curr-from-select');
+  let currToSelect = $('#curr-to-select');
+  for (let i in codes) {
+    let optionString = `<option value=${codes[i][0]}>${codes[i][1]}</option>`;
+    currFromSelect.append(optionString);
+    currToSelect.append(optionString);
+  }
 }
 
 storeCodes().then(() => {

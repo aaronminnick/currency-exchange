@@ -6,8 +6,17 @@ async function storeCodes() {
       if (response.supported_codes) {
         sessionStorage.setItem('codes', JSON.stringify(response.supported_codes));
       } else {
-        $('#error-display').html(`<p>Error: ${response.message}</p>`)
+        $('#error-display').html(`<p>Error: ${response.message}</p>`);
       }
     });
   }
 }
+
+function populateSelects() {
+  let codes = JSON.parse(sessionStorage.getItem('codes'));
+  console.log(codes);
+}
+
+storeCodes().then(() => {
+  populateSelects();
+});
